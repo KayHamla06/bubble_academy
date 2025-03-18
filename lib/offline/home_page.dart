@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'grades/grades.dart'; // Import your Grades class.
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -6,22 +7,43 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Home"),
-        backgroundColor: Colors.blue,
-      ),
+      appBar: AppBar(title: const Text("Home"), backgroundColor: Colors.blue),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            ElevatedButton(onPressed: () {}, child: const Text("Grade")),
+            ElevatedButton(
+              onPressed: () {
+                // Navigate to the Grades screen.
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Grades()),
+                );
+              },
+              child: const Text("Grade"),
+            ),
             const SizedBox(height: 10),
-            ElevatedButton(onPressed: () {}, child: const Text("Subject")),
+            ElevatedButton(
+              onPressed: () {
+                // Placeholder for Subject button functionality.
+              },
+              child: const Text("Subject"),
+            ),
             const SizedBox(height: 10),
-            ElevatedButton(onPressed: () {}, child: const Text("Videos")),
+            ElevatedButton(
+              onPressed: () {
+                // Placeholder for Videos button functionality.
+              },
+              child: const Text("Videos"),
+            ),
             const SizedBox(height: 10),
-            ElevatedButton(onPressed: () {}, child: const Text("Quizzes")),
+            ElevatedButton(
+              onPressed: () {
+                // Placeholder for Quizzes button functionality.
+              },
+              child: const Text("Quizzes"),
+            ),
           ],
         ),
       ),

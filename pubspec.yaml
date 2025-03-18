@@ -53,6 +53,9 @@ dev_dependencies:
 flutter:
   assets:
     - lib/assets/BubbleAcademy_Logo.png
+    - lib/assets/bubble_logo.png
+    - lib/assets/student-grades.png
+    - lib/assets/education.png
 
 
   # The following line ensures that the Material Icons font is
