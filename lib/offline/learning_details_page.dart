@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:bubble_academy/offline/construction.dart';
 
 class LearningDetailsPage extends StatefulWidget {
   const LearningDetailsPage({super.key});
@@ -10,15 +11,44 @@ class LearningDetailsPage extends StatefulWidget {
 class _LearningDetailsPageState extends State<LearningDetailsPage> {
   String? selectedGrade;
   String? selectedSubject;
-  List<String> grades = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
+
+  List<String> grades = [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11",
+    "12",
+  ];
   List<String> subjects = ["Science", "Accounting", "History"];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Learning Details"),
-        backgroundColor: Colors.blue,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context); // Navigates back to the previous page
+          },
+        ),
+        title: const Text(
+          'Learning Details',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+          ),
+        ),
+        centerTitle: true, // Ensures the title is properly centered
+        backgroundColor: const Color(0xFF1976D2), // Nice blue color
+        elevation: 5.0,
+        actions: [ Padding( padding: const EdgeInsets.only(right: 8.0), child: Row( children: [ const Text( 'Powered by Bubble', style: TextStyle(fontSize: 10, color: Colors.white), ), const SizedBox(width: 4), Image.asset( 'lib/assets/bubble_logo.png', height: 20, width: 20, ), ], ), ), ],
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 20.0),
@@ -28,12 +58,13 @@ class _LearningDetailsPageState extends State<LearningDetailsPage> {
             DropdownButton<String>(
               value: selectedGrade,
               hint: const Text("Select Your Grade"),
-              items: grades.map((String grade) {
-                return DropdownMenuItem<String>(
-                  value: grade,
-                  child: Text(grade),
-                );
-              }).toList(),
+              items:
+                  grades.map((String grade) {
+                    return DropdownMenuItem<String>(
+                      value: grade,
+                      child: Text(grade),
+                    );
+                  }).toList(),
               onChanged: (newValue) {
                 setState(() {
                   selectedGrade = newValue!;
@@ -48,12 +79,13 @@ class _LearningDetailsPageState extends State<LearningDetailsPage> {
               DropdownButton<String>(
                 value: selectedSubject,
                 hint: const Text("Choose Your Subject"),
-                items: subjects.map((String subject) {
-                  return DropdownMenuItem<String>(
-                    value: subject,
-                    child: Text(subject),
-                  );
-                }).toList(),
+                items:
+                    subjects.map((String subject) {
+                      return DropdownMenuItem<String>(
+                        value: subject,
+                        child: Text(subject),
+                      );
+                    }).toList(),
                 onChanged: (newValue) {
                   setState(() {
                     selectedSubject = newValue!;
@@ -65,13 +97,20 @@ class _LearningDetailsPageState extends State<LearningDetailsPage> {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          debugPrint("Next button pressed!");
+          if (selectedGrade != null && grades.contains(selectedGrade)) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder:
+                    (context) => Construction(grade: int.parse(selectedGrade!)),
+              ),
+            );
+          } else {
+            print("Please select a valid grade.");
+          }
         },
         backgroundColor: Colors.yellow,
-        label: const Text(
-          "Next",
-          style: TextStyle(color: Colors.black),
-        ),
+        label: const Text("Next", style: TextStyle(color: Colors.black)),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );

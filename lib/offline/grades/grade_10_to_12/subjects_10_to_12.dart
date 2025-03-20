@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Subjects8And9 extends StatefulWidget {
-  const Subjects8And9({super.key});
+class Subject10and12 extends StatefulWidget {
+  const Subject10and12({super.key});
 
   @override
-  State<Subjects8And9> createState() => _Subjects8And9State();
+  State<Subject10and12> createState() => _Subject10and12State();
 }
 
-class _Subjects8And9State extends State<Subjects8And9> {
+class _Subject10and12State extends State<Subject10and12> {
   // List of subjects
   List<String> subjects = [
     "Creative Arts",

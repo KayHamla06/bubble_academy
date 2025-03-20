@@ -56,7 +56,8 @@ flutter:
     - lib/assets/bubble_logo.png
     - lib/assets/student-grades.png
     - lib/assets/education.png
-
+    - lib/assets/construction.jpg
+    - lib/assets/construction2.jpg
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

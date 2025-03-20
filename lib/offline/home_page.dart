@@ -7,7 +7,25 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Home"), backgroundColor: Colors.blue),
+      appBar: AppBar(
+        leading: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.pop(context); // Navigates back to the previous page
+            },
+          ),
+          title: const Text(
+            'Home',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            ),
+          ),
+          centerTitle: true, // Ensures the title is properly centered
+          backgroundColor: const Color(0xFF1976D2), // Nice blue color
+          elevation: 5.0,
+          actions: [ Padding( padding: const EdgeInsets.only(right: 8.0), child: Row( children: [ const Text( 'Powered by Bubble', style: TextStyle(fontSize: 10, color: Colors.white), ), const SizedBox(width: 4), Image.asset( 'lib/assets/bubble_logo.png', height: 20, width: 20, ), ], ), ), ],
+        ),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 20.0),
         child: Column(
